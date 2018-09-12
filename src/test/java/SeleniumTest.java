@@ -62,19 +62,18 @@ public class SeleniumTest
     @Test
     public void TestSearchByClickInDropDown()
     {
-        String expectedResult = "République française - France — Wikipédia";
+        String expectedResult = "Cannelés bordelais : Recette de Cannelés bordelais - Marmiton";
         WebDriverWait wait = new WebDriverWait(this.webDriver, 10);
 
         WebElement searchField = wait.until(ExpectedConditions.elementToBeClickable(By.id("lst-ib")));
-        searchField.sendKeys("France");
+        searchField.sendKeys("cannelés");
 
         WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(By.className("lsb")));
 
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
 
-        WebElement searchFirstResult = wait.until(
-                                                    ExpectedConditions.elementToBeClickable(
+        WebElement searchFirstResult = wait.until(ExpectedConditions.elementToBeClickable(
                                                             By.cssSelector(this.firstSearchResultSelector)));
         Assert.assertEquals(expectedResult,searchFirstResult.getText());
     }
