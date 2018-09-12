@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,7 +21,17 @@ public class SeleniumTest
     @Before
     public void Setup()
     {
-        this.webDriver = new ChromeDriver();
+        String browser = System.getProperty("browser");
+        if(browser == null)
+            browser = "";
+
+        if(browser.toLowerCase().equals("chrome"))
+            this.webDriver = new ChromeDriver();
+        else if(browser.toLowerCase().equals("firefox"))
+            this.webDriver = new FirefoxDriver();
+        else
+            this.webDriver = new ChromeDriver();
+
         this.webDriver.get("https://www.google.com");
         this.webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
