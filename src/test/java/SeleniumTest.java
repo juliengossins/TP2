@@ -20,7 +20,7 @@ public class SeleniumTest
     @Before
     public void Setup()
     {
-        this.webDriver = new FirefoxDriver();
+        this.webDriver = new ChromeDriver();
         this.webDriver.get("https://www.google.com");
         this.webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
