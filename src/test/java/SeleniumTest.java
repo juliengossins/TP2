@@ -74,6 +74,7 @@ public class SeleniumTest
         searchButton.click();
 
         WebElement searchFirstResult = this.webDriver.findElement(By.cssSelector(this.firstSearchResultSelector));
+        wait.until(ExpectedConditions.elementToBeClickable(searchFirstResult));
         Assert.assertEquals(expectedResult,searchFirstResult.getText());
     }
 }
