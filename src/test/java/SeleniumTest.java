@@ -79,7 +79,7 @@ public class SeleniumTest
         WebElement searchField = wait.until(ExpectedConditions.elementToBeClickable(By.id("lst-ib")));
         searchField.sendKeys("cannelés");
 
-        WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(By.className("lsb")));
+        WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".lsbb>input")));
 
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
