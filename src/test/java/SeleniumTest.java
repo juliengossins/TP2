@@ -63,13 +63,13 @@ public class SeleniumTest
     public void TestSearchByClickInDropDown()
     {
         String expectedResult = "République française - France — Wikipédia";
+        WebDriverWait wait = new WebDriverWait(this.webDriver, 10);
 
-        WebElement searchField = this.webDriver.findElement(By.id("lst-ib"));
+        WebElement searchField = wait.until(ExpectedConditions.elementToBeClickable(By.id("lst-ib")));
         searchField.sendKeys("France");
 
-        WebElement searchButton = this.webDriver.findElement(By.className("lsb"));
+        WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(By.className("lsb")));
 
-        WebDriverWait wait = new WebDriverWait(this.webDriver, 20);
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
 
