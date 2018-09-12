@@ -69,7 +69,7 @@ public class SeleniumTest
 
         WebElement searchButton = this.webDriver.findElement(By.className("lsb"));
 
-        WebDriverWait wait = new WebDriverWait(this.webDriver, 10);
+        WebDriverWait wait = new WebDriverWait(this.webDriver, 20);
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
 
