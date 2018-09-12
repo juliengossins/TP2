@@ -78,6 +78,7 @@ public class SeleniumTest
 
         WebElement searchField = wait.until(ExpectedConditions.elementToBeClickable(By.id("lst-ib")));
         searchField.sendKeys("France");
+        searchField.sendKeys(Keys.ARROW_DOWN);
 
         WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".lsbb>input")));
 
