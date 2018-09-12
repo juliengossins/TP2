@@ -7,7 +7,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class SeleniumTest
 {
     WebDriver webDriver;
+    String firstSearchResultSelector = ".rc>.r>a";
 
     @Before
     public void Setup()
@@ -40,7 +40,7 @@ public class SeleniumTest
         WebElement element = this.webDriver.findElement(By.id("lst-ib"));
         element.sendKeys("France" + Keys.ENTER);
 
-        WebElement searchFirstResult = this.webDriver.findElement(By.xpath("//*[@id=\"rso\"]/div[2]/div/div/div/h3/a"));
+        WebElement searchFirstResult = this.webDriver.findElement(By.cssSelector(this.firstSearchResultSelector));
         Assert.assertEquals(expectedResult,searchFirstResult.getText());
     }
 
@@ -55,7 +55,7 @@ public class SeleniumTest
         WebElement searchButton = this.webDriver.findElement(By.name("btnK"));
         searchButton.click();
 
-        WebElement searchFirstResult = this.webDriver.findElement(By.xpath("//*[@id=\"rso\"]/div[2]/div/div/div/h3/a"));
+        WebElement searchFirstResult = this.webDriver.findElement(By.cssSelector(this.firstSearchResultSelector));
         Assert.assertEquals(expectedResult,searchFirstResult.getText());
     }
 
@@ -73,7 +73,7 @@ public class SeleniumTest
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
 
-        WebElement searchFirstResult = this.webDriver.findElement(By.xpath("//*[@id=\"rso\"]/div[2]/div/div/div/h3/a"));
+        WebElement searchFirstResult = this.webDriver.findElement(By.cssSelector(this.firstSearchResultSelector));
         Assert.assertEquals(expectedResult,searchFirstResult.getText());
     }
 }
