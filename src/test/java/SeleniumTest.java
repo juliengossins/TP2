@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,7 +20,7 @@ public class SeleniumTest
     @Before
     public void Setup()
     {
-        this.webDriver = new ChromeDriver();
+        this.webDriver = new FirefoxDriver();
         this.webDriver.get("https://www.google.com");
         this.webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -39,7 +40,7 @@ public class SeleniumTest
         WebElement element = this.webDriver.findElement(By.id("lst-ib"));
         element.sendKeys("France" + Keys.ENTER);
 
-        WebElement searchFirstResult = this.webDriver.findElement(By.xpath("//*[@id=\"rso\"]/div[2]/div/div/div/div/h3/a"));
+        WebElement searchFirstResult = this.webDriver.findElement(By.xpath("//*[@id=\"rso\"]/div[2]/div/div/div/h3/a"));
         Assert.assertEquals(expectedResult,searchFirstResult.getText());
     }
 
@@ -52,11 +53,9 @@ public class SeleniumTest
         searchField.sendKeys("France" + Keys.ESCAPE);
 
         WebElement searchButton = this.webDriver.findElement(By.name("btnK"));
-        WebDriverWait wait = new WebDriverWait(this.webDriver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
 
-        WebElement searchFirstResult = this.webDriver.findElement(By.xpath("//*[@id=\"rso\"]/div[2]/div/div/div/div/h3/a"));
+        WebElement searchFirstResult = this.webDriver.findElement(By.xpath("//*[@id=\"rso\"]/div[2]/div/div/div/h3/a"));
         Assert.assertEquals(expectedResult,searchFirstResult.getText());
     }
 
@@ -74,7 +73,7 @@ public class SeleniumTest
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         searchButton.click();
 
-        WebElement searchFirstResult = this.webDriver.findElement(By.xpath("//*[@id=\"rso\"]/div[2]/div/div/div/div/h3/a"));
+        WebElement searchFirstResult = this.webDriver.findElement(By.xpath("//*[@id=\"rso\"]/div[2]/div/div/div/h3/a"));
         Assert.assertEquals(expectedResult,searchFirstResult.getText());
     }
 }
